@@ -1,4 +1,4 @@
-import { Circle } from "../entity/Circle.js";
+const Circle = require("../entity/Circle").Circle;
 
 const getShape = (data) => {
   switch (data.shape) {
@@ -19,4 +19,6 @@ const getShape = (data) => {
   }
 };
 
-export { getShape };
+module.exports = {
+  getShape,
+};
