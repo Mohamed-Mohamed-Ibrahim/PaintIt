@@ -1,3 +1,5 @@
+const factory = require("./shapeFactory");
+
 let shape = null;
 
 const getShape = (req, res) => {
@@ -8,13 +10,15 @@ const setShape = (req, res) => {
   console.log(123);
   const data = req.body;
 
-  console.log(data);
+  //   console.log(data);
 
-  // if ( data.shape != null ) {
-  //     shape = factory.getShape(data);
-  // } else {
-  //     shape.setId(data.id);
-  // }
+  if (data.shape != null) {
+    shape = factory.getShape(data);
+  } else {
+    shape.setId(data.id);
+  }
+  console.log(shape);
+
   res.end();
 };
 
