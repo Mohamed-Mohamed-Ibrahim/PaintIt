@@ -6,14 +6,27 @@ const functionalitiesController = require("./controller/functionalitiesControlle
 const app = express();
 
 app.listen(8080);
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use((req, res, next) => {
+  res.locals.path = req.path;
+  next();
+});
+// app.post("/function/shape", (req, res) => {
+//   console.log(req.body);
 
-app.use("", functionalitiesController);
+//   res.end();
+// });
+// app.get("/", (req, res) => {
+//   console.log(123);
+//   res.end();
+// });
+
+app.use("/", functionalitiesController);
 // app.use("/function", actionSequenceController);
-
 // 404 page
 app.use((req, res) => {
-    res.status(404);
+  res.status(404);
+  console.log(12);
 });
-  
