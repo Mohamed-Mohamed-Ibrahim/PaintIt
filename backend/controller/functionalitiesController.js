@@ -11,9 +11,7 @@ router.post("", (res, req) => {
   if (functionalitiesService.getShape == null) {
     return;
   }
-  // console.log(1290);
   functionalitiesService.changeShape(res, req);
-  // console.log(1290123);
 });
 router.post("/function/copy", (req, res) => {
   functionalitiesService.setShape;

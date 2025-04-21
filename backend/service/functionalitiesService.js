@@ -12,8 +12,6 @@ const setShape = (req, res) => {
   console.log(123);
   const data = req.body;
 
-  //   console.log(data);
-
   if (data.shape != null) {
     shape = new Shape(data);
   } else {
@@ -47,16 +45,17 @@ const copyShape = (req, res) => {
 };
 
 const changeShape = (req, res) => {
-  let latestState = actionSequenceService.getLatestState();
-  console.log(latestState);
-  Object.values(latestState).filter((x) => {
+  let latestState = structuredClone(actionSequenceService.getLatestState());
+  // console.log(latestState);
+  latestState.filter((x) => {
     x.id != shape.id;
   });
-  console.log(latestState);
 
+  // console.log(latestState);
+  console.log(latestState.length);
   latestState.push(shape);
-  req.latestState = latestState;
-  actionSequenceService.setLatestState;
+  // req.latestState = latestState;
+  actionSequenceService.setLatestState(latestState);
 
   res.end();
 };
