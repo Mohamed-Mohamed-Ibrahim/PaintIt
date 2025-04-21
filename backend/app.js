@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const functionalitiesController = require("./controller/functionalitiesController");
-// const actionSequenceController = require("./controller/actionSequenceController");
+const actionSequenceController = require("./controller/actionSequenceController");
 
 const app = express();
 
@@ -24,9 +24,10 @@ app.use((req, res, next) => {
 // });
 
 app.use("/", functionalitiesController);
-// app.use("/function", actionSequenceController);
+app.use("/function", actionSequenceController);
 // 404 page
 app.use((req, res) => {
   res.status(404);
   console.log(12);
+  res.end();
 });

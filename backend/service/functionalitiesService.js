@@ -1,4 +1,6 @@
 const factory = require("./shapeFactory");
+const Shape = require("../model/Shape").Shape;
+const actionSequenceService = require("./actionSequenceService")
 
 let shape = null;
 
@@ -13,7 +15,7 @@ const setShape = (req, res) => {
   //   console.log(data);
 
   if (data.shape != null) {
-    shape = factory.getShape(data);
+    shape = new Shape(data);
   } else {
     shape.setId(data.id);
   }

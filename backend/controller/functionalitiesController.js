@@ -8,7 +8,7 @@ router.post("", (req, res) => {
   functionalitiesService.setShape;
   console.log(1234);
 
-  if (functionalitiesService.getShape) {
+  if (functionalitiesService.getShape == null) {
     return;
   }
   functionalitiesService.change;
@@ -16,7 +16,7 @@ router.post("", (req, res) => {
 router.post("/function/copy", (req, res) => {
   functionalitiesService.setShape;
 
-  if (functionalitiesService.getShape) {
+  if (functionalitiesService.getShape == null) {
     return;
   }
   functionalitiesService.copy;
@@ -24,7 +24,7 @@ router.post("/function/copy", (req, res) => {
 router.post("/function/delete", (req, res) => {
   functionalitiesService.setShape;
 
-  if (functionalitiesService.getShape) {
+  if (functionalitiesService.getShape == null) {
     return;
   }
   functionalitiesService.delete;

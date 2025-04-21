@@ -1,4 +1,4 @@
-const Circle = require("../entity/Circle").Circle;
+const Circle = require("../model/Circle").Circle;
 
 const getShape = (data) => {
   switch (data.shape) {
