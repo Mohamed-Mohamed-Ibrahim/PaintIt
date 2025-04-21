@@ -5,9 +5,7 @@ const getLatestState = () => {
   return history[history.length - 1];
 };
 
-const setLatestState = (req, res) => {
-  let latestState = req.body;
-
+const setLatestState = (latestState) => {
   if (currentIndex < history.length - 1) {
     history.slice(currentIndex + 1, history.size());
   }
@@ -16,7 +14,6 @@ const setLatestState = (req, res) => {
 
   history.push(latestState);
   console.log(history);
-  res.end();
 };
 
 const undo = (req, res) => {

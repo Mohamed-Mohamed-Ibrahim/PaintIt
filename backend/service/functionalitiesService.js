@@ -1,6 +1,6 @@
 const factory = require("./shapeFactory");
 const Shape = require("../model/Shape").Shape;
-const actionSequenceService = require("./actionSequenceService")
+const actionSequenceService = require("./actionSequenceService");
 
 let shape = null;
 
@@ -17,7 +17,7 @@ const setShape = (req, res) => {
   if (data.shape != null) {
     shape = new Shape(data);
   } else {
-    shape.setId(data.id);
+    shape.id = data.id;
   }
   console.log(shape);
 
@@ -25,15 +25,39 @@ const setShape = (req, res) => {
 };
 
 const deleteShape = (req, res) => {
-  return shape;
+  let latestState = actionSequenceService.getLatestState();
+
+  latestState.filter((x) => {
+    x.id != shape.id;
+  });
+
+  actionSequenceService.setLatestState(latestState);
+
+  res.end();
 };
 
 const copyShape = (req, res) => {
-  return shape;
+  let latestState = actionSequenceService.getLatestState();
+
+  latestState.push(structuredClone(shape));
+
+  actionSequenceService.setLatestState(latestState);
+
+  res.end();
 };
 
 const changeShape = (req, res) => {
-  return shape;
+  let latestState = actionSequenceService.getLatestState();
+
+  latestState.filter((x) => {
+    x.id != shape.id;
+  });
+
+  latestState.push(shape);
+
+  actionSequenceService.setLatestState(latestState);
+
+  res.end();
 };
 
 module.exports = {
