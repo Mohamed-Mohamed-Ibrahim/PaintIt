@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const functionalitiesController = require("./controller/functionalitiesController");
 const actionSequenceController = require("./controller/actionSequenceController");
 
@@ -9,6 +10,7 @@ app.listen(8080);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(cors({ origin: true, credentials: true }));
 app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
