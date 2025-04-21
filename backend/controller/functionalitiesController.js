@@ -4,14 +4,16 @@ const functionalitiesService = require("../service/functionalitiesService");
 const router = express.Router();
 
 router.post("/function/shape", functionalitiesService.setShape);
-router.post("", (req, res) => {
-  functionalitiesService.setShape;
+router.post("", (res, req) => {
+  functionalitiesService.setShape(res, req);
   console.log(1234);
 
   if (functionalitiesService.getShape == null) {
     return;
   }
-  functionalitiesService.change;
+  // console.log(1290);
+  functionalitiesService.changeShape(res, req);
+  // console.log(1290123);
 });
 router.post("/function/copy", (req, res) => {
   functionalitiesService.setShape;
@@ -19,7 +21,7 @@ router.post("/function/copy", (req, res) => {
   if (functionalitiesService.getShape == null) {
     return;
   }
-  functionalitiesService.copy;
+  functionalitiesService.copyShape;
 });
 router.post("/function/delete", (req, res) => {
   functionalitiesService.setShape;
@@ -27,7 +29,7 @@ router.post("/function/delete", (req, res) => {
   if (functionalitiesService.getShape == null) {
     return;
   }
-  functionalitiesService.delete;
+  functionalitiesService.deleteShape;
 });
 
 module.exports = router;

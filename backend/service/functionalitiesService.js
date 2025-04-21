@@ -27,7 +27,7 @@ const setShape = (req, res) => {
 const deleteShape = (req, res) => {
   let latestState = actionSequenceService.getLatestState();
 
-  latestState.filter((x) => {
+  Object.values(latestState).filter((x) => {
     x.id != shape.id;
   });
 
@@ -48,14 +48,15 @@ const copyShape = (req, res) => {
 
 const changeShape = (req, res) => {
   let latestState = actionSequenceService.getLatestState();
-
-  latestState.filter((x) => {
+  console.log(latestState);
+  Object.values(latestState).filter((x) => {
     x.id != shape.id;
   });
+  console.log(latestState);
 
   latestState.push(shape);
-
-  actionSequenceService.setLatestState(latestState);
+  req.latestState = latestState;
+  actionSequenceService.setLatestState;
 
   res.end();
 };
