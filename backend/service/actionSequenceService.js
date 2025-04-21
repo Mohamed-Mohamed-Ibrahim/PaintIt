@@ -9,7 +9,7 @@ const setLatestState = (latestState) => {
   console.log(1231231231);
   // latestState = req.latestState;
   if (currentIndex < history.length - 1) {
-    history.slice(currentIndex + 1, history.size());
+    history.slice(currentIndex + 1, history.length);
   }
 
   currentIndex++;
