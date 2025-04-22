@@ -1,8 +1,10 @@
 const factory = require("./shapeFactory");
+const saveloadService = require("./saveloadService");
 const Shape = require("../model/Shape").Shape;
 const actionSequenceService = require("./actionSequenceService");
 
 let shape = null;
+let loadFilePath = null;
 
 const getShape = (req, res) => {
   return shape;
@@ -52,12 +54,30 @@ const changeShape = (req, res) => {
   res.end();
 };
 
+const saveProgram = (saveLoc, format) => {};
+
+const SetLoadFile = (userLoadFilePath) => {
+  loadFilePath = userLoadFilePath;
+};
+
+const loadProgram = () => {
+  if( loadFilePath.includes(".json") ) {
+    saveloadService.loadJson(actionSequenceService.getLatestState(), loadFilePath)
+  } else if ( loadFilePath.includes(".xml") ){
+    saveloadService.loadXML(actionSequenceService.getLatestState(), loadFilePath)
+  }
+  loadFilePath = null;
+};
+
 module.exports = {
   setShape,
   getShape,
   deleteShape,
   copyShape,
   changeShape,
+  saveProgram,
+  SetLoadFile,
+  loadProgram,
 };
 // [
 //   {

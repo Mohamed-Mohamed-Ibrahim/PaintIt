@@ -119,7 +119,7 @@ function cleanShape(shape) {
     width: parseFloat(shape.width._text),
     height: parseFloat(shape.height._text),
     closed: shape.closed._text === "true",
-    points: tmp, // original has an empty object
+    points: tmp,
     shape: shape.shape._text,
     id: parseInt(shape.id._text),
   };

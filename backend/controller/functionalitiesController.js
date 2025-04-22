@@ -21,12 +21,24 @@ router.post("/function/copy", (req, res) => {
   functionalitiesService.copyShape(res, req);
 });
 router.post("/function/delete", (req, res) => {
-  functionalitiesService.setShape(res, req);
+  functionalitiesService.setShape(req, res);
 
   if (functionalitiesService.getShape() == null) {
     return;
   }
   functionalitiesService.deleteShape(res, req);
+});
+
+router.post("/function/save", (req, res) => {
+  functionalitiesService.saveProgram(req.body.saveLoc, req.body.format);
+});
+
+router.post("/function/load", (req, res) => {
+  functionalitiesService.SetLoadFile(req.body);
+});
+
+router.get("/function/load/program", (req, res) => {
+  functionalitiesService.loadProgram();
 });
 
 module.exports = router;
