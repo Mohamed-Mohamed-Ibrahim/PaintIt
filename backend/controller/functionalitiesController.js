@@ -13,7 +13,7 @@ router.post("", (res, req) => {
   functionalitiesService.changeShape(res, req);
 });
 router.post("/function/copy", (req, res) => {
-  functionalitiesService.setShape(res, req);
+  functionalitiesService.setShape(req, res);
 
   if (functionalitiesService.getShape() == null) {
     return;

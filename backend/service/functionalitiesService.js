@@ -11,12 +11,13 @@ const getShape = (req, res) => {
 const setShape = (req, res) => {
   console.log(123);
   const data = req.body;
-
+  // console.log(data);
   if (data.shape != null) {
     shape = new Shape(data);
   } else {
     shape.id = data.id;
   }
+  // console;
   console.log(shape);
 
   res.end();
@@ -34,7 +35,7 @@ const deleteShape = (req, res) => {
 
 const copyShape = (req, res) => {
   let latestState = structuredClone(actionSequenceService.getLatestState());
-
+  console.log(shape);
   latestState.push(structuredClone(shape));
 
   actionSequenceService.setLatestState(latestState);
