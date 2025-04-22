@@ -23,10 +23,11 @@ const setLatestState = (latestState) => {
 const undo = (req, res) => {
   if (currentIndex >= 1) {
     currentIndex--;
+    console.log(history[currentIndex]);
     res.send(history[currentIndex]);
     res.end();
+    return;
   }
-
   res.send(history[0]);
   res.end();
 };
@@ -36,6 +37,7 @@ const redo = (req, res) => {
     currentIndex++;
     res.send(history[currentIndex]);
     res.end();
+    return;
   }
 
   res.send(history[history.length - 1]);
