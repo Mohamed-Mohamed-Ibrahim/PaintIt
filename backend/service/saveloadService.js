@@ -1,7 +1,7 @@
 const tools = require("xml-js");
 const fs = require("fs");
 
-const loadJson = (program, saveLoc) => {
+const saveJson = (program, saveLoc) => {
     program.array.forEach(shape => {
         fs.writeFile(saveLoc, shape, (error) => {
             // throwing the error
@@ -16,7 +16,7 @@ const loadJson = (program, saveLoc) => {
     });
 }
 
-const loadXML = (program, saveLoc) => {
+const saveXML = (program, saveLoc) => {
     program.array.forEach(shape => {
         fs.writeFile(saveLoc, tools.js2xml({shape}), (error) => {
             // throwing the error
@@ -33,5 +33,7 @@ const loadXML = (program, saveLoc) => {
 
 module.exports = {
     loadJson,
-    loadXML
+    loadXML,
+    saveJson,
+    saveXML
 }

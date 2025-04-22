@@ -54,7 +54,27 @@ const changeShape = (req, res) => {
   res.end();
 };
 
-const saveProgram = (saveLoc, format) => {};
+const saveProgram = (saveLoc, format) => {
+
+  if( saveLoc.equals(null) )
+    return;
+
+  if( format == 1 ){
+
+      save.saveJson( actionSequenceController.getLatestState(), saveLoc+".json");
+
+  } else if ( format == 2 ) {
+
+      save.saveXML(actionSequenceController.getLatestState(), saveLoc+".xml");
+
+  } else if ( format == 3 ) {
+
+      save.saveJson( actionSequenceController.getLatestState(), saveLoc+".json");
+      save.saveXML(actionSequenceController.getLatestState(), saveLoc+".xml");
+
+  }
+
+};
 
 const SetLoadFile = (userLoadFilePath) => {
   loadFilePath = userLoadFilePath;
@@ -62,9 +82,9 @@ const SetLoadFile = (userLoadFilePath) => {
 
 const loadProgram = () => {
   if( loadFilePath.includes(".json") ) {
-    saveloadService.loadJson(actionSequenceService.getLatestState(), loadFilePath)
+    saveloadService.loadJson(loadFilePath)
   } else if ( loadFilePath.includes(".xml") ){
-    saveloadService.loadXML(actionSequenceService.getLatestState(), loadFilePath)
+    saveloadService.loadXML(loadFilePath)
   }
   loadFilePath = null;
 };
