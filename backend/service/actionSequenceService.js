@@ -15,7 +15,7 @@ const setLatestState = (latestState) => {
   }
 
   currentIndex++;
-
+  console.log(JSON.stringify(latestState));
   history.push(latestState);
   // console.log(`History size ${history.forEach((x) => console.log(x.length))}`);
 };
