@@ -16,7 +16,7 @@ function Shape(data) {
   this.closed = false;
   this.points = null;
   this.shape = "circle";
-  this.id = "";
+  this.id = -1;
 
   if (data.x != undefined) this.x = data.x;
   if (data.y != undefined) this.y = data.y;

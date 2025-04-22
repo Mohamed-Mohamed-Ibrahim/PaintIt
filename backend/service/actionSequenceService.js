@@ -2,11 +2,13 @@ let history = [[]];
 let currentIndex = 0;
 
 const getLatestState = () => {
+  // console.log("getLatestState");
+  // console.log(structuredClone(history[history.length - 1]));
   return history[history.length - 1];
 };
 
 const setLatestState = (latestState) => {
-  console.log(1231231231);
+  // console.log(1231231231);
   // latestState = req.latestState;
   if (currentIndex < history.length - 1) {
     history.slice(currentIndex + 1, history.length);
@@ -15,7 +17,7 @@ const setLatestState = (latestState) => {
   currentIndex++;
 
   history.push(latestState);
-  console.log(history);
+  // console.log(`History size ${history.forEach((x) => console.log(x.length))}`);
 };
 
 const undo = (req, res) => {
