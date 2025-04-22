@@ -1,0 +1,1 @@
+1. Fix undo 1 color 1 => error sitaution 
