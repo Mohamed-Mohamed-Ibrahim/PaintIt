@@ -23,9 +23,9 @@ const setShape = (req, res) => {
 };
 
 const deleteShape = (req, res) => {
-  let latestState = actionSequenceService.getLatestState();
+  let latestState = structuredClone(actionSequenceService.getLatestState());
 
-  Object.values(latestState).filter((x) => {
+  latestState.filter((x) => {
     x.id != shape.id;
   });
 
@@ -35,7 +35,7 @@ const deleteShape = (req, res) => {
 };
 
 const copyShape = (req, res) => {
-  let latestState = actionSequenceService.getLatestState();
+  let latestState = structuredClone(actionSequenceService.getLatestState());
 
   latestState.push(structuredClone(shape));
 
@@ -52,7 +52,7 @@ const changeShape = (req, res) => {
   });
 
   // console.log(latestState);
-  console.log(latestState.length);
+  // console.log(latestState.length);
   latestState.push(shape);
   // req.latestState = latestState;
   actionSequenceService.setLatestState(latestState);
