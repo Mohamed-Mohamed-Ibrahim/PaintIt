@@ -1,5 +1,5 @@
 const tools = require("xml-js");
-const Shape = require("./model/Shape").Shape
+const Shape = require("./model/Shape").Shape;
 const input = [
   {
     x: 774.8608703613281,
@@ -22,8 +22,8 @@ const input = [
     id: 1,
   },
   {
-    x: 1459.8608703613281,
-    y: 523.4405534976208,
+    x: 0,
+    y: 0,
     scaleX: 0,
     scaleY: 0,
     rotation: 0,
@@ -31,15 +31,18 @@ const input = [
     fill: "white",
     stroke: "black",
     draggable: false,
-    radius: 123,
+    radius: 0,
     radiusX: 0,
     radiusY: 0,
     width: 0,
     height: 0,
-    closed: false,
-    points: null,
-    shape: "circle",
-    id: 2,
+    closed: true,
+    points: [
+      794.8608703613281, 200.436993228783, 1117.8608703613281,
+      444.43968271979367, 585.8608703613281, 580.4411817803569,
+    ],
+    shape: "triangle",
+    id: "2",
   },
 ];
 // console.log(input);
@@ -97,6 +100,9 @@ input.forEach((shape) =>
 );
 
 function cleanShape(shape) {
+  let tmp = [];
+  Object.values(shape.points).forEach((x) => tmp.push(parseFloat(x._text)));
+
   return {
     x: parseFloat(shape.x._text),
     y: parseFloat(shape.y._text),
@@ -113,21 +119,19 @@ function cleanShape(shape) {
     width: parseFloat(shape.width._text),
     height: parseFloat(shape.height._text),
     closed: shape.closed._text === "true",
-    points: null, // original has an empty object
+    points: tmp, // original has an empty object
     shape: shape.shape._text,
     id: parseInt(shape.id._text),
   };
 }
 
-
 console.log(tmp);
-let res = []
-tmp.forEach(
-  (shape) => {
-    let ok = new Shape(tools.xml2js(shape, { compact: true }).shape)
-    ok = cleanShape(ok);
-    res.push(ok)
-  }
-)
+let res = [];
+tmp.forEach((shape) => {
+  let ok = new Shape(tools.xml2js(shape, { compact: true }).shape);
+  console.log(ok);
+  ok = cleanShape(ok);
+  res.push(ok);
+});
 
 console.log(res);
