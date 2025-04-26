@@ -54,26 +54,92 @@ const changeShape = (req, res) => {
   res.end();
 };
 
-const saveProgram = (saveLoc, format) => {
+const saveProgram = (saveLoc, format, res) => {
+  let tmp = [
+    {
+      x: 550.7652206420898,
+      y: 211.60870361328125,
+      scaleX: 0,
+      scaleY: 0,
+      rotation: 0,
+      strokeWidth: 2,
+      fill: "white",
+      stroke: "black",
+      draggable: false,
+      radius: 123,
+      radiusX: 0,
+      radiusY: 0,
+      width: 0,
+      height: 0,
+      closed: false,
+      points: [],
+      shape: "circle",
+      id: 1,
+    },
+    {
+      x: 1379.7652206420898,
+      y: 348.60870361328125,
+      scaleX: 0,
+      scaleY: 0,
+      rotation: 0,
+      strokeWidth: 2,
+      fill: "white",
+      stroke: "black",
+      draggable: false,
+      radius: 123,
+      radiusX: 0,
+      radiusY: 0,
+      width: 0,
+      height: 0,
+      closed: false,
+      points: [],
+      shape: "circle",
+      id: 2,
+    },
+    {
+      x: 817.7652206420898,
+      y: 570.6087036132812,
+      scaleX: 0,
+      scaleY: 0,
+      rotation: 0,
+      strokeWidth: 2,
+      fill: "white",
+      stroke: "black",
+      draggable: false,
+      radius: 123,
+      radiusX: 0,
+      radiusY: 0,
+      width: 0,
+      height: 0,
+      closed: false,
+      points: [],
+      shape: "circle",
+      id: 3,
+    },
+  ];
+  if (saveLoc == null) return;
 
-  if( saveLoc.equals(null) )
-    return;
-
-  if( format == 1 ){
-
-      save.saveJson( actionSequenceController.getLatestState(), saveLoc+".json");
-
-  } else if ( format == 2 ) {
-
-      save.saveXML(actionSequenceController.getLatestState(), saveLoc+".xml");
-
-  } else if ( format == 3 ) {
-
-      save.saveJson( actionSequenceController.getLatestState(), saveLoc+".json");
-      save.saveXML(actionSequenceController.getLatestState(), saveLoc+".xml");
-
+  if (format == 1) {
+    // save.saveJson( actionSequenceController.getLatestState(), saveLoc+".json");
+    saveloadService.saveJson(tmp, saveLoc + ".json");
+  } else if (format == 2) {
+    // saveloadService.saveXML(
+    //   actionSequenceController.getLatestState(),
+    //   saveLoc + ".xml"
+    // );
+    saveloadService.saveXML(tmp, saveLoc + ".xml");
+  } else if (format == 3) {
+    saveloadService.saveJson(
+      actionSequenceController.getLatestState(),
+      saveLoc + ".json"
+    );
+    saveloadService.saveXML(
+      actionSequenceController.getLatestState(),
+      saveLoc + ".xml"
+    );
   }
 
+  res.end();
 };
 
 const SetLoadFile = (userLoadFilePath) => {
@@ -81,10 +147,10 @@ const SetLoadFile = (userLoadFilePath) => {
 };
 
 const loadProgram = () => {
-  if( loadFilePath.includes(".json") ) {
-    saveloadService.loadJson(loadFilePath)
-  } else if ( loadFilePath.includes(".xml") ){
-    saveloadService.loadXML(loadFilePath)
+  if (loadFilePath.includes(".json")) {
+    saveloadService.loadJson(loadFilePath);
+  } else if (loadFilePath.includes(".xml")) {
+    saveloadService.loadXML(loadFilePath);
   }
   loadFilePath = null;
 };

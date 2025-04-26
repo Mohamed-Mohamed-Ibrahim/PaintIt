@@ -30,7 +30,7 @@ router.post("/function/delete", (req, res) => {
 });
 
 router.post("/function/save", (req, res) => {
-  functionalitiesService.saveProgram(req.body.saveLoc, req.body.format);
+  functionalitiesService.saveProgram(req.body.saveLoc, req.body.format, res);
 });
 
 router.post("/function/load", (req, res) => {
