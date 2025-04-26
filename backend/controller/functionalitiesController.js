@@ -2,7 +2,6 @@ const express = require("express");
 const functionalitiesService = require("../service/functionalitiesService");
 
 const router = express.Router();
-
 router.post("/function/shape", functionalitiesService.setShape);
 router.post("", (res, req) => {
   functionalitiesService.setShape(res, req);
@@ -34,11 +33,12 @@ router.post("/function/save", (req, res) => {
 });
 
 router.post("/function/load", (req, res) => {
-  functionalitiesService.SetLoadFile(req.body, res);
+  console.log(req.body.filePath);
+  functionalitiesService.SetLoadFile(req.body.filePath, res);
 });
 
 router.get("/function/load/program", (req, res) => {
- functionalitiesService.loadProgram(res);
+  functionalitiesService.loadProgram(res);
 });
 
 module.exports = router;

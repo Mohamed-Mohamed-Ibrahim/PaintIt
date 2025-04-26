@@ -310,12 +310,16 @@ export default {
 
     async loadData() {
       layer.destroy();
+      var object = {};
+      // object["filePath"] = this.file.replace(/\\/g, "/");
+      object["filePath"] = this.file;
+      var json = JSON.stringify(object);
       await fetch("http://localhost:8080/function/load", {
         method: "post",
         headers: {
-          "Contect-type": "application/json; charset=UTF-8",
+          "Content-type": "application/json; charset=UTF-8",
         },
-        body: this.file,
+        body: json,
       });
 
       const result = await fetch("http://localhost:8080/function/load/program");

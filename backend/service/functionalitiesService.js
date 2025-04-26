@@ -120,21 +120,24 @@ const saveProgram = (saveLoc, format, res) => {
   if (saveLoc == null) return;
 
   if (format == 1) {
-    save.saveJson(actionSequenceController.getLatestState(), saveLoc + ".json");
+    saveloadService.saveJson(
+      actionSequenceService.getLatestState(),
+      saveLoc + ".json"
+    );
     // saveloadService.saveJson(tmp, saveLoc + ".json");
   } else if (format == 2) {
     saveloadService.saveXML(
-      actionSequenceController.getLatestState(),
+      actionSequenceService.getLatestState(),
       saveLoc + ".xml"
     );
     // saveloadService.saveXML(tmp, saveLoc + ".xml");
   } else if (format == 3) {
     saveloadService.saveJson(
-      actionSequenceController.getLatestState(),
+      actionSequenceService.getLatestState(),
       saveLoc + ".json"
     );
     saveloadService.saveXML(
-      actionSequenceController.getLatestState(),
+      actionSequenceService.getLatestState(),
       saveLoc + ".xml"
     );
   }
@@ -144,22 +147,27 @@ const saveProgram = (saveLoc, format, res) => {
 
 const SetLoadFile = (userLoadFilePath, res) => {
   loadFilePath = userLoadFilePath;
+  console.log(userLoadFilePath);
   res.end();
 };
 
 const loadProgram = (res) => {
-  let loadFilePath = "D:/Life/projects/PaintIt/okok.xml";
-  if (loadFilePath.includes(".json")) {
-    // const state = saveloadService.loadJson(loadFilePath);
-    actionSequenceService.setLatestState(
-      saveloadService.loadJson(loadFilePath)
-    );
-    // console.log(state);
-  } else if (loadFilePath.includes(".xml")) {
-    // const state = saveloadService.loadXML(loadFilePath);
-    actionSequenceService.setLatestState(saveloadService.loadXML(loadFilePath));
-    // console.log(state);
+  // let loadFilePath = "D:/Life/projects/PaintIt/okok.xml";
+  console.log(loadFilePath);
+  if (loadFilePath == null) {
+    res.end();
+    return;
   }
+  let state = [];
+  if (loadFilePath.includes(".json")) {
+    state = saveloadService.loadJson(loadFilePath);
+  } else if (loadFilePath.includes(".xml")) {
+    state = saveloadService.loadXML(loadFilePath);
+  }
+  actionSequenceService.setLatestState(
+    state
+  );
+  res.send(state);
   loadFilePath = null;
   res.end();
 };
