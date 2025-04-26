@@ -148,13 +148,17 @@ const SetLoadFile = (userLoadFilePath, res) => {
 };
 
 const loadProgram = (res) => {
-  let loadFilePath = "D:/Life/projects/PaintIt/okok.json";
+  let loadFilePath = "D:/Life/projects/PaintIt/okok.xml";
   if (loadFilePath.includes(".json")) {
-    const state = saveloadService.loadJson(loadFilePath);
-    actionSequenceService.setLatestState(state);
-    console.log(state);
+    // const state = saveloadService.loadJson(loadFilePath);
+    actionSequenceService.setLatestState(
+      saveloadService.loadJson(loadFilePath)
+    );
+    // console.log(state);
   } else if (loadFilePath.includes(".xml")) {
-    saveloadService.loadXML(loadFilePath);
+    // const state = saveloadService.loadXML(loadFilePath);
+    actionSequenceService.setLatestState(saveloadService.loadXML(loadFilePath));
+    // console.log(state);
   }
   loadFilePath = null;
   res.end();
