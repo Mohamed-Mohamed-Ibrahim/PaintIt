@@ -34,11 +34,11 @@ router.post("/function/save", (req, res) => {
 });
 
 router.post("/function/load", (req, res) => {
-  functionalitiesService.SetLoadFile(req.body);
+  functionalitiesService.SetLoadFile(req.body, res);
 });
 
 router.get("/function/load/program", (req, res) => {
-  functionalitiesService.loadProgram();
+ functionalitiesService.loadProgram(res);
 });
 
 module.exports = router;

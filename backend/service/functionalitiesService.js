@@ -120,14 +120,14 @@ const saveProgram = (saveLoc, format, res) => {
   if (saveLoc == null) return;
 
   if (format == 1) {
-    // save.saveJson( actionSequenceController.getLatestState(), saveLoc+".json");
-    saveloadService.saveJson(tmp, saveLoc + ".json");
+    save.saveJson(actionSequenceController.getLatestState(), saveLoc + ".json");
+    // saveloadService.saveJson(tmp, saveLoc + ".json");
   } else if (format == 2) {
-    // saveloadService.saveXML(
-    //   actionSequenceController.getLatestState(),
-    //   saveLoc + ".xml"
-    // );
-    saveloadService.saveXML(tmp, saveLoc + ".xml");
+    saveloadService.saveXML(
+      actionSequenceController.getLatestState(),
+      saveLoc + ".xml"
+    );
+    // saveloadService.saveXML(tmp, saveLoc + ".xml");
   } else if (format == 3) {
     saveloadService.saveJson(
       actionSequenceController.getLatestState(),
@@ -142,17 +142,22 @@ const saveProgram = (saveLoc, format, res) => {
   res.end();
 };
 
-const SetLoadFile = (userLoadFilePath) => {
+const SetLoadFile = (userLoadFilePath, res) => {
   loadFilePath = userLoadFilePath;
+  res.end();
 };
 
-const loadProgram = () => {
+const loadProgram = (res) => {
+  let loadFilePath = "D:/Life/projects/PaintIt/okok.json";
   if (loadFilePath.includes(".json")) {
-    saveloadService.loadJson(loadFilePath);
+    const state = saveloadService.loadJson(loadFilePath);
+    actionSequenceService.setLatestState(state);
+    console.log(state);
   } else if (loadFilePath.includes(".xml")) {
     saveloadService.loadXML(loadFilePath);
   }
   loadFilePath = null;
+  res.end();
 };
 
 module.exports = {
