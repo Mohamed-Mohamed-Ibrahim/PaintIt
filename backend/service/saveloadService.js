@@ -30,9 +30,22 @@ const saveXML = (program, saveLoc) => {
   fs.writeFileSync(saveLoc, "", { flag: "w" });
 
   program.forEach((shape) => {
+    console.log(
+      tools.js2xml(
+        { shape },
+        {
+          compact: true,
+        }
+      )
+    );
     fs.writeFile(
       saveLoc,
-      tools.js2xml({ shape }) + "\r\n",
+      tools.js2xml(
+        { shape },
+        {
+          compact: true,
+        }
+      ) + "\r\n",
       { flag: "a" },
       (error) => {
         // throwing the error
