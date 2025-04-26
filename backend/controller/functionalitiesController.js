@@ -33,7 +33,6 @@ router.post("/function/save", (req, res) => {
 });
 
 router.post("/function/load", (req, res) => {
-  console.log(req.body.filePath);
   functionalitiesService.SetLoadFile(req.body.filePath, res);
 });
 

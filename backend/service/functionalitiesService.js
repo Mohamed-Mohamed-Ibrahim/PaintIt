@@ -147,13 +147,13 @@ const saveProgram = (saveLoc, format, res) => {
 
 const SetLoadFile = (userLoadFilePath, res) => {
   loadFilePath = userLoadFilePath;
-  console.log(userLoadFilePath);
+  // console.log(userLoadFilePath);
   res.end();
 };
 
 const loadProgram = (res) => {
   // let loadFilePath = "D:/Life/projects/PaintIt/okok.xml";
-  console.log(loadFilePath);
+  // console.log(loadFilePath);
   if (loadFilePath == null) {
     res.end();
     return;
@@ -164,9 +164,7 @@ const loadProgram = (res) => {
   } else if (loadFilePath.includes(".xml")) {
     state = saveloadService.loadXML(loadFilePath);
   }
-  actionSequenceService.setLatestState(
-    state
-  );
+  actionSequenceService.setLatestState(state);
   res.send(state);
   loadFilePath = null;
   res.end();
