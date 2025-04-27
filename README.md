@@ -1,8 +1,3 @@
-Perfect!  
-Here’s the **final polished README** including the **badges** and a clean **Dockerized project intro**:
-
----
-
 # 🎨 Paint App
 
 [![Dockerized](https://img.shields.io/badge/Dockerized-✔️-2496ED?logo=docker)](https://www.docker.com/)
