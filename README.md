@@ -71,10 +71,7 @@ It supports a variety of functionalities such as drawing, coloring, resizing, mo
 
 ## 🎥 Demo Video
 
-<video width="640" height="480" controls>
-  <source src="./docs/Paint.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="./docs/Paint.gif" width="640" height="480" alt="Demo GIF">
 
 ---
 
