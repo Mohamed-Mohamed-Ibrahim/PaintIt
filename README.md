@@ -50,7 +50,7 @@ It supports a variety of functionalities such as drawing, coloring, resizing, mo
    Make sure you have **Docker** and **Docker Compose** installed, then run:
 
    ```bash
-   docker-compose up --build
+   sudo docker compose up --build
    ```
 
 3. **Access the application:**
@@ -114,16 +114,16 @@ Paint-App/
 
 - **Start project**:
   ```bash
-  docker-compose up --build
+  sudo docker compose up --build
   ```
 - **Stop project**:
   ```bash
-  docker-compose down
+  sudo docker compose down
   ```
 - **Rebuild specific services**:
   ```bash
-  docker-compose build frontend
-  docker-compose build backend
+  sudo docker compose build frontend
+  sudo docker compose build backend
   ```
 
 ---

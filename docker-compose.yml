@@ -16,5 +16,5 @@ services:
     volumes:
       - ./frontend:/app
     restart: always
-    depends_on:
-      - backend
+    # depends_on:
+    #   - backend
