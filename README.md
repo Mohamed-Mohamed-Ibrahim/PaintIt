@@ -1,4 +1,4 @@
-# 🎨 Paint App
+# 🎨 PaintIt
 
 [![Dockerized](https://img.shields.io/badge/Dockerized-✔️-2496ED?logo=docker)](https://www.docker.com/)
 [![NodeJS Backend](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js)](https://nodejs.org/)
