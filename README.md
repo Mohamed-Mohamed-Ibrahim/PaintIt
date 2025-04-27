@@ -24,12 +24,14 @@ The Paint App is a drawing and painting application that allows users to create,
 ## Installation & Setup
 
 1. **Clone the repository:**
+
    ```sh
    git clone https://github.com/OmarHani4306/Paint-App.git
    cd Paint-App
    ```
 
 2. **Backend Setup (Node.js):**
+
    - Make sure you have Node.js and npm installed.
    - Navigate to the backend directory:
      ```sh
@@ -40,6 +42,7 @@ The Paint App is a drawing and painting application that allows users to create,
    - This will start the server at `http://localhost:8080`.
 
 3. **Frontend Setup (Vue.js):**
+
    - Navigate to the frontend directory:
      ```sh
      cd frontend
@@ -61,7 +64,8 @@ The Paint App is a drawing and painting application that allows users to create,
 5. Load saved drawings to continue editing.
 
 ## Demo Video
-[Watch the demo](https://drive.google.com/drive/folders/13ZgN5x4j2bfR3j7XUH7romC16ZNwk8N3?usp=sharing)
+
+![](./docs/Paint.mp4)
 
 ## Contributors
 
