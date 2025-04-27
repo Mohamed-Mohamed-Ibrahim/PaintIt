@@ -9,7 +9,7 @@
 
 ## 📜 Description
 
-The Paint App is a drawing and painting web application that allows users to create, modify, and manipulate geometric shapes interactively.  
+The PaintIt is a drawing and painting web application that allows users to create, modify, and manipulate geometric shapes interactively.  
 Built using **Node.js** for the backend and **Vue.js** for the frontend, fully **Dockerized** for easy deployment.
 
 It supports a variety of functionalities such as drawing, coloring, resizing, moving, copying, deleting shapes, undo/redo, and saving/loading files.
